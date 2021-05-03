@@ -1,52 +1,69 @@
-name: ""
+name: ibm-iam-service-authorization
+alias: service-authorization
 type: terraform
-description: ""
+description: Module to create an authorization policy that will allow one service to access another.
 tags:
-    - tools
-    - devops
+    - iam
+    - service
+    - authorization
+    - policy
 versions:
-- platforms:
-    - kubernetes
-    - ocp3
-    - ocp4
-  dependencies: []
-#    - id: cluster
-#      refs:
-#        - source: github.com/ibm-garage-cloud/terraform-ibm-container-platform
-#          version: ">= 1.7.0"
-#        - source: github.com/ibm-garage-cloud/terraform-k8s-ocp-cluster
-#          version: ">= 2.0.0"
-#    - id: namespace
-#      refs:
-#        - source: github.com/ibm-garage-cloud/terraform-k8s-namespace
-#          version: ">= 2.1.0"
-#    - id: dashboard
-#      refs:
-#        - source: github.com/ibm-garage-cloud/terraform-k8s-dashboard
-#          version: ">= 1.6.0"
-  variables: []
-#    - name: cluster_type
-#      moduleRef:
-#        id: cluster
-#        output: type_code
-#    - name: cluster_ingress_hostname
-#      moduleRef:
-#        id: cluster
-#        output: ingress_hostname
-#    - name: cluster_config_file
-#      moduleRef:
-#        id: cluster
-#        output: config_file_path
-#    - name: tls_secret_name
-#      moduleRef:
-#        id: cluster
-#        output: tls_secret_name
-#    - name: releases_namespace
-#      moduleRef:
-#        id: namespace
-#        output: name
-#        discriminator: tools
-#    - name: icon_url
-#      moduleRef:
-#        id: dashboard
-#        output: base_icon_url
+- platforms: []
+  dependencies:
+    - id: source_resource
+      refs: []
+      interface: github.com/cloud-native-toolkit/garage-terraform-modules#ibm-service
+      optional: true
+    - id: source_resource_group
+      refs:
+        - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+          version: ">= 1.0.0"
+      optional: true
+    - id: target_resource
+      refs: []
+      interface: github.com/cloud-native-toolkit/garage-terraform-modules#ibm-service
+      optional: true
+    - id: target_resource_group
+      refs:
+        - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+          version: ">= 1.0.0"
+      optional: true
+  variables:
+    - name: source_service_name
+      moduleRef:
+        id: source_resource
+        output: service
+    - name: source_resource_instance_id
+      moduleRef:
+        id: source_resource
+        output: id
+      optional: true
+    - name: source_resource_type
+      moduleRef:
+        id: source_resource
+        output: type
+      optional: true
+    - name: source_resource_group_id
+      moduleRef:
+        id: source_resource_group
+        output: id
+      optional: true
+    - name: target_service_name
+      moduleRef:
+        id: target_resource
+        output: service
+    - name: target_resource_instance_id
+      moduleRef:
+        id: target_resource
+        output: id
+      optional: true
+    - name: target_resource_type
+      moduleRef:
+        id: target_resource
+        output: type
+      optional: true
+    - name: target_resource_group_id
+      moduleRef:
+        id: target_resource_group
+        output: id
+      optional: true
