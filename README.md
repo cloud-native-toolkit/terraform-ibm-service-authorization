@@ -41,3 +41,7 @@ module "dev_tools_argocd" {
 }
 ```
 
+## Attribution
+
+This module is derived from https://github.com/terraform-ibm-modules/terraform-ibm-iam/tree/main/modules/authorization-policy
+
