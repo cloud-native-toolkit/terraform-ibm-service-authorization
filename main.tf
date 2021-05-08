@@ -5,6 +5,8 @@
 #####################################################
 
 resource ibm_iam_authorization_policy policy {
+  count = var.provision ? 1 : 0
+
   source_service_name         = var.source_service_name
   target_service_name         = var.target_service_name
   roles                       = var.roles

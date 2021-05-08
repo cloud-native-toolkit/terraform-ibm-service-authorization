@@ -1,6 +1,6 @@
 #####################################################
 # IAM authorization policy
-# Copyright 2020 IBM
+# Copyright 2021 IBM
 #####################################################
 
 variable "source_service_name" {
@@ -59,4 +59,10 @@ variable "source_service_account" {
   description = "GUID of the account where the source service is provisioned. This is required to authorize service access across accounts."
   type        = string
   default     = null
+}
+
+variable "provision" {
+  description = "Flag indicating that the service authorization should be created"
+  type        = bool
+  default     = true
 }
