@@ -15,18 +15,14 @@ versions:
       interface: github.com/cloud-native-toolkit/garage-terraform-modules#ibm-service
       optional: true
     - id: source_resource_group
-      refs:
-        - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
-          version: ">= 1.0.0"
+      refs: []
       optional: true
     - id: target_resource
       refs: []
       interface: github.com/cloud-native-toolkit/garage-terraform-modules#ibm-service
       optional: true
     - id: target_resource_group
-      refs:
-        - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
-          version: ">= 1.0.0"
+      refs: []
       optional: true
   variables:
     - name: source_service_name
