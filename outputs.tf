@@ -1,9 +1,9 @@
 #####################################################
 # IAM authorization policy
-# Copyright 2020 IBM
+# Copyright 2021 IBM
 #####################################################
 
 output "iam_authorization_policy_id" {
   description = "The ID of the authorization policy ID"
-  value       = ibm_iam_authorization_policy.policy.id
+  value       = var.provision ? ibm_iam_authorization_policy.policy[0].id : ""
 }
