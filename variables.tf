@@ -66,3 +66,15 @@ variable "provision" {
   type        = bool
   default     = true
 }
+
+variable "source_instance" {
+  description = "Flag indicating that the source instance id should be mapped"
+  type        = bool
+  default     = false
+}
+
+variable "target_instance" {
+  description = "Flag indicating that the target instance id should be mapped"
+  type        = bool
+  default     = false
+}
