@@ -9,6 +9,9 @@ tags:
     - policy
 versions:
 - platforms: []
+  providers:
+    - name: ibm
+      source: "ibm-cloud/ibm"
   dependencies:
     - id: source_resource
       refs: []
