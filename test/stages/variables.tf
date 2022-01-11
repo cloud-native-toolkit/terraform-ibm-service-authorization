@@ -12,7 +12,8 @@ variable "ibmcloud_api_key" {
 
 variable "region" {
   type        = string
-  description = "Region for VLANs defined in private_vlan_number and public_vlan_number."
+  description = "Region to sign into IBM Cloud."
+  default     = "us-south"
 }
 
 variable "namespace" {

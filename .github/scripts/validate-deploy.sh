@@ -2,7 +2,10 @@
 
 set -e
 
-ibmcloud login --apikey "${IBMCLOUD_API_KEY}" -r us-east
+
+ibmcloud api cloud.ibm.com
+ibmcloud login -q --no-region
+ibmcloud target -r $REGION
 
 ibmcloud iam authorization-policies --output JSON | jq '.[] | select(.resources[].attributes[].value == "cloud-object-storage") | select(.subjects[].attributes[].value == "flow-log-collector")'
 AUTHORIZATION_COUNT=$(ibmcloud iam authorization-policies --output JSON | jq '.[] | select(.resources[].attributes[].value == "cloud-object-storage") | select(.subjects[].attributes[].value == "flow-log-collector") | .id' | wc -l)

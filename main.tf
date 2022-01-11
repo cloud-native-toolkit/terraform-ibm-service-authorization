@@ -9,17 +9,27 @@ locals {
   target_resource_instance_id = var.target_instance ? var.target_resource_instance_id : null
 }
 
-resource ibm_iam_authorization_policy policy {
-  count = var.provision ? 1 : 0
+module "clis" {
+  source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
+}
 
-  source_service_name         = var.source_service_name
-  target_service_name         = var.target_service_name
-  roles                       = var.roles
-  source_resource_instance_id = local.source_resource_instance_id
-  target_resource_instance_id = local.target_resource_instance_id
-  source_resource_group_id    = var.source_resource_group_id
-  target_resource_group_id    = var.target_resource_group_id
-  source_resource_type        = var.source_resource_type
-  target_resource_type        = var.target_resource_type
-  source_service_account      = var.source_service_account
+resource null_resource create_authorization_policy {
+  provisioner "local-exec" {
+      command = "${path.module}/scripts/create-authorization-policy.sh"
+      environment = {
+        IBMCLOUD_API_KEY = var.ibmcloud_api_key
+        REGION = var.region
+        SOURCE_SERVICE_NAME         = var.source_service_name
+        TARGET_SERVICE_NAME         = var.target_service_name
+        ROLES                       = jsonencode(var.roles)
+        SOURCE_RESOURCE_INSTANCE_ID = local.source_resource_instance_id
+        TARGET_RESOURCE_INSTANCE_ID = local.target_resource_instance_id
+        SOURCE_RESOURCE_GROUP_ID    = var.source_resource_group_id
+        TARGET_RESOURCE_GROUP_ID    = var.target_resource_group_id
+        SOURCE_RESOURCE_TYPE        = var.source_resource_type
+        TARGET_RESOURCE_TYPE        = var.target_resource_type
+        SOURCE_SERVICE_ACCOUNT      = var.source_service_account
+        BIN_DIR = module.clis.bin_dir
+      }
+  }
 }
