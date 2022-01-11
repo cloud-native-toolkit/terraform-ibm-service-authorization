@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 PATH=$BIN_DIR:$PATH
 
