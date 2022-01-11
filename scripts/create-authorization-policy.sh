@@ -3,8 +3,8 @@
 PATH=$BIN_DIR:$PATH
 
 ibmcloud api cloud.ibm.com
-echo "ibmcloud login --q --apikey $IBMCLOUD_API_KEY --no-region"
-ibmcloud login --q --apikey $IBMCLOUD_API_KEY --no-region
+echo "ibmcloud login --q --apikey ${IBMCLOUD_API_KEY} --no-region"
+ibmcloud login --q --apikey ${IBMCLOUD_API_KEY} --no-region
 ibmcloud target -r $REGION
 
 
