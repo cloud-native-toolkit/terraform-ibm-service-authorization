@@ -5,8 +5,8 @@ PATH=$BIN_DIR:$PATH
 echo "base64: $(echo $IBMCLOUD_API_KEY | base64)"
 
 ibmcloud api cloud.ibm.com
-echo "ibmcloud login --q --apikey ${IBMCLOUD_API_KEY} --no-region"
-ibmcloud login --q --no-region
+echo "ibmcloud login -q --no-region"
+ibmcloud login -q --no-region
 ibmcloud target -r $REGION
 
 
