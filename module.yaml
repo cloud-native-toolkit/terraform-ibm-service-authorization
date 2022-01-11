@@ -71,3 +71,5 @@ versions:
         id: target_resource_group
         output: id
       optional: true
+    - name: ibmcloud_api_key
+      scope: global
