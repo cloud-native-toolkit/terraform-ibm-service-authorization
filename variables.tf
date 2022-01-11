@@ -3,6 +3,17 @@
 # Copyright 2021 IBM
 #####################################################
 
+variable "ibmcloud_api_key" {
+  type        = string
+  description = "The IBM Cloud api key"
+}
+
+variable "region" {
+  type        = string
+  description = "Region to sign into IBM Cloud."
+  default     = "us-south"
+}
+
 variable "source_service_name" {
   description = "The name of the service that will be authorized to access the target service. This value is the name of the service as it appears in the service catalog."
   type        = string
