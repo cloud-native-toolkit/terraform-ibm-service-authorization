@@ -3,7 +3,8 @@
 PATH=$BIN_DIR:$PATH
 
 ibmcloud api cloud.ibm.com
-ibmcloud login -q --apikey ${IBMCLOUD_API_KEY} -r $REGION 
+ibmcloud login -q --apikey ${IBMCLOUD_API_KEY}
+ibmcloud target -r $REGION
 
 
 COMMAND="ibmcloud iam authorization-policy-create $SOURCE_SERVICE_NAME $TARGET_SERVICE_NAME $(echo $ROLES | jq -r '.| join(",")')"
