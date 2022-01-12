@@ -3,6 +3,9 @@
 # This ensures that the module does not fail if the service auth already exists.
 
 module "service_authorization2" {
+  depends_on = [
+    module.service_authorization
+  ]
   source = "./module"
 
   source_service_name = "cloud-object-storage"

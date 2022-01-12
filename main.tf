@@ -18,7 +18,6 @@ resource null_resource create_authorization_policy {
       command = "${path.module}/scripts/create-authorization-policy.sh"
       environment = {
         IBMCLOUD_API_KEY = var.ibmcloud_api_key
-        REGION = var.region
         SOURCE_SERVICE_NAME         = var.source_service_name
         TARGET_SERVICE_NAME         = var.target_service_name
         ROLES                       = jsonencode(var.roles)
