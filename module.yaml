@@ -73,5 +73,3 @@ versions:
       optional: true
     - name: ibmcloud_api_key
       scope: global
-    - name: region
-      scope: global
