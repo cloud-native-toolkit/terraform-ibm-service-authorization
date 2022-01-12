@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PATH=$BIN_DIR:$PATH
-JQ=$(command -v jq | command -v ./bin/jq)
+JQ="$BIN_DIR/jq"
 
 IAM_TOKEN=$(curl -s -X POST "https://iam.cloud.ibm.com/identity/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
