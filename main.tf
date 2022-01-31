@@ -14,6 +14,7 @@ module "clis" {
 }
 
 resource null_resource create_authorization_policy {
+  count = var.provision ? 1 : 0
   provisioner "local-exec" {
       command = "${path.module}/scripts/create-authorization-policy.sh"
       environment = {
