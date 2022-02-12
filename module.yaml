@@ -16,16 +16,22 @@ versions:
     - id: source_resource
       refs: []
       interface: github.com/cloud-native-toolkit/automation-modules#ibm-service
+      manualResolution: true
       optional: true
     - id: source_resource_group
-      refs: []
+      refs:
+        - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+      manualResolution: true
       optional: true
     - id: target_resource
       refs: []
       interface: github.com/cloud-native-toolkit/automation-modules#ibm-service
+      manualResolution: true
       optional: true
     - id: target_resource_group
-      refs: []
+      refs:
+        - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+      manualResolution: true
       optional: true
   variables:
     - name: source_service_name
