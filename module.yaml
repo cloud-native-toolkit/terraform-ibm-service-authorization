@@ -53,11 +53,6 @@ versions:
         id: source_resource_group
         output: id
       optional: true
-    - name: provision
-      moduleRef:
-        id: source_resource_group
-        output: provision
-      optional: true
     - name: target_service_name
       moduleRef:
         id: target_resource
