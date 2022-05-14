@@ -29,11 +29,11 @@ resource null_resource create_authorization_policy {
     ROLES                       = jsonencode(var.roles)
     SOURCE_RESOURCE_INSTANCE_ID = local.source_resource_instance_id
     TARGET_RESOURCE_INSTANCE_ID = local.target_resource_instance_id
-    SOURCE_RESOURCE_GROUP_ID    = var.source_resource_group_id
-    TARGET_RESOURCE_GROUP_ID    = var.target_resource_group_id
-    SOURCE_RESOURCE_TYPE        = var.source_resource_type
-    TARGET_RESOURCE_TYPE        = var.target_resource_type
-    SOURCE_SERVICE_ACCOUNT      = var.source_service_account
+    SOURCE_RESOURCE_GROUP_ID    = var.source_resource_group_id != null ? var.source_resource_group_id : ""
+    TARGET_RESOURCE_GROUP_ID    = var.target_resource_group_id != null ? var.target_resource_group_id : ""
+    SOURCE_RESOURCE_TYPE        = var.source_resource_type != null ? var.source_resource_type : ""
+    TARGET_RESOURCE_TYPE        = var.target_resource_type != null ? var.target_resource_type : ""
+    SOURCE_SERVICE_ACCOUNT      = var.source_service_account != null ? var.source_service_account : ""
     UUID                        = random_uuid.tag.result
     BIN_DIR                     = module.clis.bin_dir
   }
