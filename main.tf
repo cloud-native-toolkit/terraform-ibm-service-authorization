@@ -1,9 +1,3 @@
-
-#####################################################
-# IAM authorization policy
-# Copyright 2021 IBM
-#####################################################
-
 locals {
   source_resource_instance_id = var.source_instance ? var.source_resource_instance_id : ""
   target_resource_instance_id = var.target_instance ? var.target_resource_instance_id : ""
