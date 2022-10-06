@@ -45,10 +45,15 @@ if [[ -n "${SOURCE_RESOURCE_INSTANCE_ID}" ]]; then
   SOURCE="${SOURCE}/${SOURCE_RESOURCE_INSTANCE_ID}"
 fi
 
-
 COMPLETE_ROLES="[]"
 for role in $(echo "$ROLES" | jq -r '.[]'); do
-  COMPLETE_ROLES=$(echo "${COMPLETE_ROLES}" | jq --arg ROLE "crn:v1:bluemix:public:iam::::serviceRole:${role}" '. += [{"role_id": $ROLE}]')
+  ## Following enables SecretsReader role which is under the secrets-manager service instead of iam
+  if [[ "${role}" == "SecretsReader" ]]; then
+    SRV_NAME="secrets-manager"
+  else
+    SRV_NAME="iam"
+  fi
+  COMPLETE_ROLES=$(echo "${COMPLETE_ROLES}" | jq --arg ROLE "crn:v1:bluemix:public:${SRV_NAME}::::serviceRole:${role}" '. += [{"role_id": $ROLE}]')
 done
 
 
