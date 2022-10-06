@@ -1,4 +1,4 @@
-module "service_authorization" {
+module "service_authorization3" {
   source = "./module"
 
   source_service_name = "is"
